@@ -1,5 +1,5 @@
 server:
-  port: 6070
+  port: 6076
   servlet:
     contextPath: /api
 
@@ -30,4 +30,4 @@ spring:
         enabled: true
   mvc:
     pathmatch:
-      matching-strategy: ant_path_matcher
+      matching-strategy: ant-path-matcher

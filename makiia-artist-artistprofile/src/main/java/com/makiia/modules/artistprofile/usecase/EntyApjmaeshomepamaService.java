@@ -1,19 +1,22 @@
 package com.makiia.modules.artistprofile.usecase;
-import com.makiia.crosscutting.domain.model.EntyDeleteDto;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.persistence.PersistenceException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+
 import com.makiia.crosscutting.domain.model.EntyApjmaeshomepamaDto;
 import com.makiia.crosscutting.domain.model.EntyApjmaeshomepamaResponse;
 import com.makiia.crosscutting.domain.model.EntyArtistUtiliDto;
+import com.makiia.crosscutting.domain.model.EntyDeleteDto;
 import com.makiia.crosscutting.exceptions.ExceptionBuilder;
 import com.makiia.crosscutting.exceptions.Main.EBusinessException;
 import com.makiia.crosscutting.messages.SearchMessages;
 import com.makiia.modules.artistprofile.dataproviders.jpa.JpaEntyApjmaeshomepamaDataProviders;
 import com.makiia.modules.bus.services.UseCase;
 import com.makiia.modules.bus.services.UsecaseServices;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
-import javax.annotation.PostConstruct;
-import javax.persistence.PersistenceException;
-import java.util.List;
 
 @UseCase
 public class EntyApjmaeshomepamaService extends UsecaseServices<EntyApjmaeshomepamaDto, JpaEntyApjmaeshomepamaDataProviders>
@@ -34,6 +37,10 @@ public class EntyApjmaeshomepamaService extends UsecaseServices<EntyApjmaeshomep
             }
         
             dtoAux = this.ijpaDataProvider.save(dtoAux);
+            dto.setRspValue("OK");
+            dto.setRspMessage("OK");
+            dto.setRspParentKey("NA");
+            dto.setRspAppKey("NA");
             dto.setRspData(dtoAux);
             return dto;
         }catch (PersistenceException | DataAccessException e){
@@ -52,6 +59,10 @@ public class EntyApjmaeshomepamaService extends UsecaseServices<EntyApjmaeshomep
             for (EntyApjmaeshomepamaDto dtox : dtoAux){
                 dtox = this.ijpaDataProvider.update(dtox.getRecUnikeyAphp(),dtox);
             }
+            dto.setRspValue("OK");
+            dto.setRspMessage("OK");
+            dto.setRspParentKey("NA");
+            dto.setRspAppKey("NA");
             dto.setRspData(dtoAux);
             return dto;
 

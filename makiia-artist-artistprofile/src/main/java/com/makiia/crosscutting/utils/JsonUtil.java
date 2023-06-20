@@ -1,10 +1,9 @@
 package com.makiia.crosscutting.utils;
 
-import com.makiia.crosscutting.domain.constants.Constants;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
+import com.makiia.crosscutting.domain.constants.Constants;
 
 import lombok.experimental.UtilityClass;
 @UtilityClass
