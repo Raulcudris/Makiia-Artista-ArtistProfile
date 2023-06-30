@@ -1,7 +1,13 @@
 package com.makiia.crosscutting.domain.model;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.*;
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @Builder
@@ -9,7 +15,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EntyApjmaeshomepamaDto {
-
     private Integer recUnikeyAphp;
     private String  apjNroregAphp;
     private String  apjTitgruAphp;
@@ -52,6 +57,5 @@ public class EntyApjmaeshomepamaDto {
     private Integer sisCountcRkey;
     private Integer sisCountdRkey;
     private Integer sisCounteRkey;
-    private String  apjEstregAphp;
-    
+    private String  apjEstregAphp;    
 }

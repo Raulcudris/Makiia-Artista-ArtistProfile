@@ -74,18 +74,21 @@ public class JpaEntyApjmaeshomepamaDataProviders implements IjpaEntyApjmaeshomep
     }
 
     @Override
-    public EntyApjmaeshomepamaResponse getAll(int currentPage, int totalPageSize, int parameter, String filter)
+    public EntyApjmaeshomepamaResponse getAll(int currentPage, int totalPageSize, String parameter, String filter)
             throws EBusinessException {
         try {
             currentPage = currentPage - 1;
             Pageable pageable = PageRequest.of(currentPage, totalPageSize);
             Page<EntyApjmaeshomepama> ResponsePage = null;
             
-            if (parameter == 0) {
+          if (parameter.equals("PKEY")) {
+            ResponsePage = repository.findByRecUnikeyAphp(Integer.parseInt(filter), pageable);
+          } else
+           {
+               //FKEY
                 ResponsePage = repository.findByApjNroregAphp(filter, pageable);
-            } else {
-               ResponsePage = repository.findByRecUnikeyAphp(parameter, pageable);
             }
+            
 
             List<EntyApjmaeshomepama> ListPage = ResponsePage.getContent();
             List<EntyApjmaeshomepamaDto> content = ListPage.stream().map(p -> mapToDto(p)).collect(Collectors.toList());

@@ -15,8 +15,8 @@ import com.makiia.crosscutting.exceptions.ExceptionBuilder;
 import com.makiia.crosscutting.exceptions.Main.EBusinessException;
 import com.makiia.crosscutting.messages.SearchMessages;
 import com.makiia.modules.artistprofile.dataproviders.jpa.JpaEntyApjmaeshomepamaDataProviders;
-import com.makiia.modules.bus.services.UseCase;
-import com.makiia.modules.bus.services.UsecaseServices;
+import com.makiia.modules.artistprofile.services.UseCase;
+import com.makiia.modules.artistprofile.services.UsecaseServices;
 
 @UseCase
 public class EntyApjmaeshomepamaService extends UsecaseServices<EntyApjmaeshomepamaDto, JpaEntyApjmaeshomepamaDataProviders>

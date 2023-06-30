@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class EntyArtistUtiliDto {
-	  private int    recPKey;
-	  private String recEstreg;
+	  private Integer recPKey;
+	  private String  recEstreg;
 }

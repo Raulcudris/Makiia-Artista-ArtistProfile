@@ -1,4 +1,4 @@
-package com.makiia.modules.bus.services;
+package com.makiia.modules.artistprofile.services;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,9 +32,9 @@ public class TraceabilityService {
 
     private static final String TRANSACTION_ID = "transactionId";
 
-    private static final String COMPONENT = "ApprovalServices";
+    private static final String COMPONENT = "ArtistProfileServices";
 
-    private static final String SERVICE = "RADIAN";
+    private static final String SERVICE = "ARTISTPROFILE";
 
     private static final Locale LOCALE = new Locale("es", "CO");
 
