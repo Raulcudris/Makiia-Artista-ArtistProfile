@@ -31,8 +31,8 @@ public class JpaEntyApjmaeshomepamaDataProviders implements IjpaEntyApjmaeshomep
     @Autowired
     private EntyApjmaeshomepamaRepository repository;
     @Autowired
-    @Qualifier("entyApjmaeshomepamaSaveResponseTranslate")
-    private Translator<EntyApjmaeshomepama, EntyApjmaeshomepamaDto> saveResponseTranslate;
+    @Qualifier("entyApjmaeshomepamaEntityToDtoTranslate")
+    private Translator<EntyApjmaeshomepama, EntyApjmaeshomepamaDto> entityToDtoTranslate;
     @Autowired
     @Qualifier("entyApjmaeshomepamaDtoToEntityTranslate")
     private Translator<EntyApjmaeshomepamaDto, EntyApjmaeshomepama> dtoToEntityTranslate;
@@ -118,7 +118,7 @@ public class JpaEntyApjmaeshomepamaDataProviders implements IjpaEntyApjmaeshomep
     @Override
     public EntyApjmaeshomepamaDto get(Integer id) throws EBusinessException {
         try {
-            return saveResponseTranslate.translate(repository.findById(id).get());
+            return entityToDtoTranslate.translate(repository.findById(id).get());
         } catch (PersistenceException | DataAccessException e) {
             throw ExceptionBuilder.builder()
                     .withMessage(SearchMessages.SEARCH_ERROR_DESCRIPTION)
@@ -131,7 +131,7 @@ public class JpaEntyApjmaeshomepamaDataProviders implements IjpaEntyApjmaeshomep
     @Override
     public EntyApjmaeshomepamaDto save(EntyApjmaeshomepamaDto dto) throws EBusinessException {
         try {
-            return saveResponseTranslate.translate(repository.save(dtoToEntityTranslate.translate(dto)));
+            return entityToDtoTranslate.translate(repository.save(dtoToEntityTranslate.translate(dto)));
         } catch (PersistenceException | DataAccessException e) {
             throw ExceptionBuilder.builder()
                     .withMessage(SearchMessages.CREATE_ERROR_DESCRIPTION)
@@ -151,7 +151,7 @@ public class JpaEntyApjmaeshomepamaDataProviders implements IjpaEntyApjmaeshomep
             }
             dtos = new ArrayList<>();
             for (EntyApjmaeshomepama entity : repository.saveAll(entities)) {
-                dtos.add(saveResponseTranslate.translate(entity));
+                dtos.add(entityToDtoTranslate.translate(entity));
             }
             return dtos;
         } catch (PersistenceException | DataAccessException e) {
@@ -169,10 +169,10 @@ public class JpaEntyApjmaeshomepamaDataProviders implements IjpaEntyApjmaeshomep
             EntyApjmaeshomepama entity = dtoToEntityTranslate.translate(dto);
             EntyApjmaeshomepama old = repository.findById(id).get();
 
-            old.setRecUnikeyAphp(
-                    Objects.nonNull(dto.getRecUnikeyAphp()) && !entity.getRecUnikeyAphp().equals(0)
-                            ? entity.getRecUnikeyAphp()
-                            : old.getRecUnikeyAphp());
+            old.setApjIdeunikeyAphp(
+                    Objects.nonNull(dto.getApjIdeunikeyAphp()) && !entity.getApjIdeunikeyAphp().equals(0)
+                            ? entity.getApjIdeunikeyAphp()
+                            : old.getApjIdeunikeyAphp());
 
             old.setApjNroregAphp(
                     Objects.nonNull(dto.getApjNroregAphp()) && !entity.getApjNroregAphp().isEmpty()
@@ -375,7 +375,7 @@ public class JpaEntyApjmaeshomepamaDataProviders implements IjpaEntyApjmaeshomep
                             : old.getApjEstregAphp());
 
 
-            return saveResponseTranslate.translate(repository.save(old));
+            return entityToDtoTranslate.translate(repository.save(old));
         } catch (PersistenceException | DataAccessException e) {
             throw ExceptionBuilder.builder()
                     .withMessage(SearchMessages.UPDATE_ERROR_DESCRIPTION)
@@ -402,7 +402,7 @@ public class JpaEntyApjmaeshomepamaDataProviders implements IjpaEntyApjmaeshomep
     private EntyApjmaeshomepamaDto mapToDto(EntyApjmaeshomepama p) {
         EntyApjmaeshomepamaDto dto = new EntyApjmaeshomepamaDto();
 
-        dto.setRecUnikeyAphp(p.getRecUnikeyAphp());
+        dto.setApjIdeunikeyAphp(p.getApjIdeunikeyAphp());
         dto.setApjNroregAphp(p.getApjNroregAphp());
         dto.setApjTitgruAphp(p.getApjTitgruAphp());
         dto.setApjLnkgruAphp(p.getApjLnkgruAphp());

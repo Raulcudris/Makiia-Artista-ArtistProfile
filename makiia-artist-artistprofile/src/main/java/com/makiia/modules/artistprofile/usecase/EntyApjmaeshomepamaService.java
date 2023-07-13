@@ -57,7 +57,7 @@ public class EntyApjmaeshomepamaService extends UsecaseServices<EntyApjmaeshomep
             List<EntyApjmaeshomepamaDto> dtoAux = dto.getRspData();
 
             for (EntyApjmaeshomepamaDto dtox : dtoAux){
-                dtox = this.ijpaDataProvider.update(dtox.getRecUnikeyAphp(),dtox);
+                dtox = this.ijpaDataProvider.update(dtox.getApjIdeunikeyAphp(),dtox);
             }
             dto.setRspValue("OK");
             dto.setRspMessage("OK");

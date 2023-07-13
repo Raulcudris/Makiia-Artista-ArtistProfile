@@ -8,7 +8,7 @@ import com.makiia.crosscutting.persistence.entity.EntyApjmaeshomepama;
 
 public interface EntyApjmaeshomepamaRepository extends JpaRepository<EntyApjmaeshomepama,Integer>
 {
-        String FILTER_ARTISTPROFILE_RECUNIKEYREGl_QUERY = "select c from EntyApjmaeshomepama c  where c.recUnikeyAphp  = ?1 and c.apjEstregAphp ='1'";
+        String FILTER_ARTISTPROFILE_RECUNIKEYREGl_QUERY = "select c from EntyApjmaeshomepama c  where c.apjIdeunikeyAphp  = ?1 and c.apjEstregAphp ='1'";
         @Query(value = FILTER_ARTISTPROFILE_RECUNIKEYREGl_QUERY)
         Page<EntyApjmaeshomepama> findByRecUnikeyAphp(Integer filter, Pageable pageable);
         

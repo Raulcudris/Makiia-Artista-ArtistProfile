@@ -1,12 +1,21 @@
 package com.makiia.crosscutting.persistence.entity;
+import java.io.Serializable;
+import java.time.LocalDate;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.*;
-import java.io.Serializable;
-import java.time.LocalDate;
 
 @Data
 @Entity
@@ -20,8 +29,8 @@ public class EntyApjmaeshomepama implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "rec_unikey_aphp")
-    private Integer  recUnikeyAphp;
+    @Column(name = "apj_ideunikey_aphp")
+    private Integer  apjIdeunikeyAphp;
 
     @Basic(optional = false)
     @Column(name = "apj_nroreg_aphp")

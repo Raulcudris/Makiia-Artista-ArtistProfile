@@ -15,7 +15,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EntyApjmaeshomepamaDto {
-    private Integer recUnikeyAphp;
+    private Integer apjIdeunikeyAphp;
     private String  apjNroregAphp;
     private String  apjTitgruAphp;
     private String  apjLnkgruAphp;
